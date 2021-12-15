@@ -1,7 +1,7 @@
 ## Very Important
 This Project is Just a Simple Modification of this Project: https://github.com/c-as/godot-voip
-The Original Project Was Running on WebSocket but This One is Running on Enet
-Whole Project Belongs to Original contributors
+The Original Project Was Running on WebSocket but This One is Running on Enet.
+Whole Project Belongs to Original contributors.
 
 # Godot VoIP 🎙️🌐
 ![logo](https://raw.githubusercontent.com/casbrugman/godot-voip/master/icon.svg "Logo")
