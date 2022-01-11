@@ -50,8 +50,16 @@ config/icon="res://icon.png"
 default_bus_layout=""
 enable_audio_input=true
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/godot-voip/plugin.cfg" )
+
+[global]
+
+aud=false
+audio=false
+
 [rendering]
 
-quality/driver/driver_name="GLES2"
 environment/default_clear_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 environment/default_environment="res://default_env.tres"
