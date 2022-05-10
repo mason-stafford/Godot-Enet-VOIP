@@ -16,12 +16,7 @@ var _playback: AudioStreamGeneratorPlayback
 var _receive_buffer := PoolRealArray()
 var _prev_frame_recording = false
 
-#func _process(delta: float) -> void:
-#	if _playback != null:
-#		_process_voice()
-#
-#	_process_mic()
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	if _playback != null:
 		_process_voice()
 
@@ -73,10 +68,6 @@ func _process_voice():
 		_playback.push_frame(Vector2(_receive_buffer[0], _receive_buffer[0]))
 		_receive_buffer.remove(0)
 
-	if _playback.get_frames_available() > 0:
-		var buffer = PoolVector2Array()
-		buffer.resize(_playback.get_frames_available())
-		_playback.push_buffer(buffer)
 
 func _process_mic():
 	if recording:
