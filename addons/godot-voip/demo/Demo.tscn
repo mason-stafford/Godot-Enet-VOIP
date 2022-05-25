@@ -70,9 +70,6 @@ func _on_Button_client_pressed() -> void:
 
 	labelStatus.text = \"Connecting...\"
 
-func _on_Disconnect_pressed() -> void:
-	network.stop()
-	ui_reset()
 
 func _on_Button_voice_button_down() -> void:
 	if !buttonVoice.toggle_mode:
@@ -84,7 +81,6 @@ func _on_Button_voice_button_up() -> void:
 
 func _on_Voice_toggled(button_pressed: bool) -> void:
 	voice.recording = button_pressed
-	print(button_pressed)
 
 func _on_Toggle_toggled(button_pressed: bool) -> void:
 	buttonVoice.toggle_mode = button_pressed
@@ -162,9 +158,6 @@ func ui_reset() -> void:
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = SubResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Network" type="Node" parent="."]
 script = ExtResource( 2 )
@@ -376,18 +369,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Disconnect" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 314.0
-margin_right = 250.0
-margin_bottom = 334.0
-disabled = true
-text = "Disconnect"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 344.0
+margin_top = 314.0
 margin_right = 250.0
 margin_bottom = 500.0
 size_flags_horizontal = 3
@@ -398,9 +381,9 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/CenterContainer"]
 margin_left = 50.0
-margin_top = 3.0
+margin_top = 18.0
 margin_right = 200.0
-margin_bottom = 153.0
+margin_bottom = 168.0
 rect_min_size = Vector2( 150, 150 )
 texture = ExtResource( 3 )
 expand = true
@@ -454,4 +437,3 @@ selection_enabled = true
 [connection signal="button_down" from="MarginContainer/HBoxContainer/VBoxContainer/Voice" to="." method="_on_Button_voice_button_down"]
 [connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer/Voice" to="." method="_on_Button_voice_button_up"]
 [connection signal="toggled" from="MarginContainer/HBoxContainer/VBoxContainer/Voice" to="." method="_on_Voice_toggled"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Disconnect" to="." method="_on_Disconnect_pressed"]
