@@ -1,6 +1,8 @@
 # godot-voip 🎙️🌐
 ![logo](https://raw.githubusercontent.com/casbrugman/godot-voip/master/icon.svg "Logo")
 
+it's just a simple branch of the original project, change the network platform to enet and solved the growing buffer issue with community help and some weird solution.
+
 godot-voip is a [Godot Engine](https://godotengine.org/) addon which makes it very easy to setup a real-time voice-chat system in your Godot game. This addon also includes a demo project.
 
 ## Engine Compatibility
