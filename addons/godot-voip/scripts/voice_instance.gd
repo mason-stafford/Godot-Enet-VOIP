@@ -15,6 +15,8 @@ var _effect_capture: AudioEffectCapture
 var _playback: AudioStreamGeneratorPlayback
 var _receive_buffer := PoolRealArray()
 var _prev_frame_recording = false
+var iter = 0
+
 
 func _process(delta: float) -> void:
 	if _playback != null:
@@ -50,15 +52,12 @@ func _create_voice():
 	_voice.play()
 
 remote func _speak(sample_data: PoolRealArray, id: int):
-	if (id == get_tree().get_network_unique_id()):
-		pass
-	else:
-		if _playback == null:
-			_create_voice()
+	if _playback == null:
+		_create_voice()
 
-		emit_signal("received_voice_data", sample_data, id)
+	emit_signal("received_voice_data", sample_data, id)
 
-		_receive_buffer.append_array(sample_data)
+	_receive_buffer.append_array(sample_data)
 
 func _process_voice():
 	if _playback.get_frames_available() < 1:
@@ -68,18 +67,31 @@ func _process_voice():
 		_playback.push_frame(Vector2(_receive_buffer[0], _receive_buffer[0]))
 		_receive_buffer.remove(0)
 
+#	if _playback.get_frames_available() > 0:
+#		var buffer = PoolVector2Array()
+#		buffer.resize(_playback.get_frames_available())
+#		_playback.push_buffer(buffer)
+
+
+
 
 func _process_mic():
 	if recording:
+		
+		iter = iter + 1
+		if iter == 120:
+			_effect_capture.clear_buffer()
+			iter = 0
+		
 		if _effect_capture == null:
 			_create_mic()
 
 		if _prev_frame_recording == false:
 			_effect_capture.clear_buffer()
-
+		
 		var stereo_data: PoolVector2Array = _effect_capture.get_buffer(_effect_capture.get_frames_available())
 		if stereo_data.size() > 0:
-
+			
 			var data = PoolRealArray()
 			data.resize(stereo_data.size())
 
