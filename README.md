@@ -1,4 +1,4 @@
-# godot-voip 🎙️🌐
+# godot-enet-voip 🎙️🌐
 ![logo](https://raw.githubusercontent.com/casbrugman/godot-voip/master/icon.svg "Logo")
 
 it's just a simple branch of the original project, change the network platform to enet and solved the growing buffer issue with community help and some weird solution.
